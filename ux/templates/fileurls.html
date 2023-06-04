@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Record </title>
+   </head>
+   <body>
+     {% extends "template.html" %}
+     {% block content %}
+      <table border = 1>
+         <thead>
+            <td>Search Log</td>
+         </thead>
+         <tr>
+            <td>id</td>
+            <td>search</td>
+            <td>created_at</td>
+         </tr>
+         {% for row in rows %}
+
+            <tr>
+               <td>{{row["id"]}}</td>
+               <td>{{row["filename"]}}</td>
+               <td> {{ row["downloadLink"]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+
+      <a href = "/">Go back to home page</a>
+   {% endblock %}
+   </body>
+</html>

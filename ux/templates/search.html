@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Search </title>
+   </head>
+   <center>
+   <body>
+     {% extends "template.html" %}
+     {% block content %}
+      <form action = "{{ url_for('addrecsearch') }}" method = "POST">
+         <h1>Buscador</h1>
+         Haz una búsqueda<br>
+         <textarea name = "search" ></textarea><br>
+         <input type = "submit" value = "Search" /><br>
+      </form>
+      {% endblock %}
+   </body>
+</center>
+</html>

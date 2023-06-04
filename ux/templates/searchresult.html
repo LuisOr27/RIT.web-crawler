@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Resultado de Busqueda </title>
+      <style>
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+   </head>
+   <body>
+
+      {% extends "template.html" %}
+      {% block content %}
+       <form action = "{{ url_for('addrecresults') }}" method = "POST">
+
+      <br><br>
+
+
+<div class="row">
+  <div class="column">
+
+    <table>
+
+        <h1>Buscaste: {{value}}</h1>
+         <thead>
+            <td>Resultado</td>
+         </thead>
+         <tr>
+            <td>Acta</td>
+         </tr>
+
+         {% for file in files %}
+            <tr style="height:60px">
+               <td>{{ file }}</td>
+            </tr>
+         {% endfor %}
+    </table>
+  </div>
+  <div class="column">
+    <table>
+        <h1>.</h1>
+         <thead>
+            <td>Descargar</td>
+         </thead>
+         <tr>
+            <td>URLS</td>
+              <td>Relevancia</td>
+         </tr>
+         {% for url in urls %}
+            <tr style="height:60px">
+               <td><a href="{{ url[1] }}">{{ url[0] }}</a> </td>
+                <td><input type="checkbox" name="relevance" value="{{ loop.index }}" unchecked></td>
+            </tr>
+         {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+      <p></p>
+           <input type = "submit" value = "Save" /><br>
+           <textarea name = "search" style="display:none;">{{value}}</textarea><br>
+
+      <h2><a href = "\">go back to home page</a></h2>
+       </form>
+   {% endblock %}
+   </body>
+result of addition : {{ msg }}
+</html>

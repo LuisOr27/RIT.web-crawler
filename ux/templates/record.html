@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
+   <head>
+      <meta charset="utf-8">
+      <title>Record </title>
+   </head>
+   <body>
+     {% extends "template.html" %}
+     {% block content %}
+     <center>
+     <h1> Historial </h1>
+      <table border = 1>
+         <thead>
+            <td>Search Log</td>
+         </thead>
+         <tr>
+            <td>id</td>
+            <td>search</td>
+            <td>created_at</td>
+             <td>P@5</td>
+             <td>P@10</td>
+             <td>P@20</td>
+         </tr>
+         {% for row in rows %}
+
+            <tr>
+               <td>{{row["id"]}}</td>
+               <td>{{row["search"]}}</td>
+                <td>{{row["created_at"]}}</td>
+               <td> {{ row["p_5"]}}</td>
+                <td> {{ row["p_10"]}}</td>
+                <td> {{ row["p_20"]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+        <h1><a href = "/graphics">Show Graphics</a></h1>
+      <h2><a href = "\">go back to home page</a></h2></center>
+
+   {% endblock %}
+   </body>
+</html>
